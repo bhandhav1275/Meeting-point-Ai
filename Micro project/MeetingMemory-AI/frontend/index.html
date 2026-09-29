@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MeetingMemory AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="logo">🧠</div>
+            <div>
+                <h2>MeetingMemory</h2>
+                <span>AI Assistant</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <button class="nav-btn active" onclick="showPage('dashboard', this)">
+                🏠
+                <span>Dashboard</span>
+            </button>
+
+            <button class="nav-btn" onclick="showPage('recall', this)">
+                🔍
+                <span>Recall Memory</span>
+            </button>
+
+            <button class="nav-btn" onclick="showPage('prepare', this)">
+                ✨
+                <span>Prepare Meeting</span>
+            </button>
+
+            <button class="nav-btn" onclick="showPage('history', this)">
+                🕘
+                <span>History</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="connection">
+                <span class="green-dot"></span>
+                Hindsight Connected
+            </div>
+
+            <p>Persistent meeting memory</p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="page">
+
+            <div class="topbar">
+
+                <div>
+                    <h1>MeetingMemory AI</h1>
+                    <p>Your persistent meeting memory assistant</p>
+                </div>
+
+                <div class="status">
+                    ● Backend Online
+                </div>
+
+            </div>
+
+
+            <!-- SAVE MEETING -->
+
+            <div class="dashboard-grid">
+
+                <div class="card large-card">
+
+                    <div class="card-title">
+
+                        <div>
+                            <h2>Save a Meeting</h2>
+
+                            <p>
+                                Store discussions, decisions,
+                                assignments and important information.
+                            </p>
+                        </div>
+
+                        <div class="icon-box">
+                            📝
+                        </div>
+
+                    </div>
+
+
+                    <textarea
+                        id="meetingText"
+                        placeholder="Enter your meeting discussion here..."
+                    >Today the MeetingMemory AI team discussed the final prototype. Rahul will demonstrate the frontend, Nandini will demonstrate the backend and Hindsight integration, Priya will explain the presentation and Arjun will demonstrate testing.</textarea>
+
+
+                    <button class="primary-btn" onclick="saveMeeting()">
+                        Save Meeting
+                        <span>→</span>
+                    </button>
+
+
+                    <div id="saveMessage" class="message"></div>
+
+                </div>
+
+
+                <!-- PROJECT SNAPSHOT -->
+
+                <div class="card">
+
+                    <h2>Project Snapshot</h2>
+
+                    <p class="card-description">
+                        Current MeetingMemory AI status
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span>Persistent Memory</span>
+
+                        <span>Meeting Recall</span>
+
+                        <span>AI Preparation</span>
+
+                    </div>
+
+
+                    <div class="snapshot">
+
+                        <div>
+                            <strong>September 29</strong>
+                            <span>Prototype Demo</span>
+                        </div>
+
+                        <div>
+                            <strong>October 2</strong>
+                            <span>Backend Integration</span>
+                        </div>
+
+                        <div>
+                            <strong>4 Members</strong>
+                            <span>Project Team</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STAT CARDS -->
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        🔗
+                    </div>
+
+                    <div>
+                        <strong>3</strong>
+                        <span>Core API Flows</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        🧠
+                    </div>
+
+                    <div>
+                        <strong>∞</strong>
+                        <span>Persistent Memories</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ✨
+                    </div>
+
+                    <div>
+                        <strong>AI</strong>
+                        <span>Meeting Preparation</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HOW IT WORKS -->
+
+            <div class="card workflow">
+
+                <h2>How MeetingMemory AI Works</h2>
+
+                <div class="workflow-grid">
+
+                    <div class="workflow-item">
+
+                        <div class="workflow-number">1</div>
+
+                        <div>
+                            <h3>Save</h3>
+                            <p>
+                                Meeting discussions are stored
+                                using persistent memory.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="workflow-item">
+
+                        <div class="workflow-number">2</div>
+
+                        <div>
+                            <h3>Recall</h3>
+                            <p>
+                                Ask questions about previous
+                                meetings and decisions.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="workflow-item">
+
+                        <div class="workflow-number">3</div>
+
+                        <div>
+                            <h3>Prepare</h3>
+                            <p>
+                                Generate useful context before
+                                the next meeting.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RECALL ================= -->
+
+        <section id="recall" class="page hidden">
+
+            <div class="topbar">
+
+                <div>
+                    <h1>Recall Memory</h1>
+
+                    <p>
+                        Ask questions about previous meetings.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    <div>
+                        <h2>Search Meeting Memory</h2>
+
+                        <p>
+                            Ask the AI what it remembers.
+                        </p>
+                    </div>
+
+                    <div class="icon-box">
+                        🔍
+                    </div>
+
+                </div>
+
+
+                <textarea
+                    id="recallQuestion"
+                    placeholder="Example: Who is responsible for the frontend?"
+                >Who is responsible for the frontend, backend, presentation and testing?</textarea>
+
+
+                <button class="primary-btn" onclick="recallMemory()">
+                    Recall Memory
+                    <span>→</span>
+                </button>
+
+
+                <div id="recallLoading" class="loading hidden">
+                    Searching memory...
+                </div>
+
+
+                <div id="recallResult" class="result-box hidden">
+
+                    <h3>🧠 Memory Results</h3>
+
+                    <div id="recallContent"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PREPARE ================= -->
+
+        <section id="prepare" class="page hidden">
+
+            <div class="topbar">
+
+                <div>
+                    <h1>Prepare for Meeting</h1>
+
+                    <p>
+                        Use previous meeting memory to prepare.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    <div>
+                        <h2>AI Meeting Preparation</h2>
+
+                        <p>
+                            Get context and important points
+                            before your next meeting.
+                        </p>
+                    </div>
+
+                    <div class="icon-box">
+                        ✨
+                    </div>
+
+                </div>
+
+
+                <textarea
+                    id="prepareQuestion"
+                    placeholder="What should I know before the meeting?"
+                >Prepare me for the MeetingMemory AI prototype demonstration.</textarea>
+
+
+                <button class="primary-btn" onclick="prepareMeeting()">
+                    Prepare Me
+                    <span>→</span>
+                </button>
+
+
+                <div id="prepareLoading" class="loading hidden">
+                    Preparing meeting context...
+                </div>
+
+
+                <div id="prepareResult" class="result-box hidden">
+
+                    <h3>✨ Meeting Preparation</h3>
+
+                    <div id="prepareContent"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HISTORY ================= -->
+
+        <section id="history" class="page hidden">
+
+            <div class="topbar">
+
+                <div>
+                    <h1>Meeting History</h1>
+
+                    <p>
+                        Important information captured from meetings.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Recent Project Information</h2>
+
+                <div class="history-list">
+
+                    <div class="history-item">
+
+                        <div class="history-icon">
+                            🧠
+                        </div>
+
+                        <div>
+
+                            <h3>MeetingMemory AI Prototype</h3>
+
+                            <p>
+                                Persistent memory, meeting recall
+                                and AI meeting preparation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="history-item">
+
+                        <div class="history-icon">
+                            💻
+                        </div>
+
+                        <div>
+
+                            <h3>Backend Integration</h3>
+
+                            <p>
+                                Nandini — Hindsight integration
+                                and backend API.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="history-item">
+
+                        <div class="history-icon">
+                            🎨
+                        </div>
+
+                        <div>
+
+                            <h3>Frontend Demonstration</h3>
+
+                            <p>
+                                Rahul — frontend demonstration.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="history-item">
+
+                        <div class="history-icon">
+                            📊
+                        </div>
+
+                        <div>
+
+                            <h3>Presentation</h3>
+
+                            <p>
+                                Priya — project presentation
+                                and demonstration explanation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="history-item">
+
+                        <div class="history-icon">
+                            🧪
+                        </div>
+
+                        <div>
+
+                            <h3>Testing</h3>
+
+                            <p>
+                                Arjun — testing the project flow.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
